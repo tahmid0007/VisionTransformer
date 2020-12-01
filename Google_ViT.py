@@ -123,7 +123,7 @@ class ImageTransformer(nn.Module):
 
         self.to_cls_token = nn.Identity()
 
-        self.nn1 = nn.Linear(dim, mlp_dim)  # if finetuning, just use a linear layer without further hidden layers (paper)
+        self.nn1 = nn.Linear(dim, num_classes)  # if finetuning, just use a linear layer without further hidden layers (paper)
         torch.nn.init.xavier_uniform_(self.nn1.weight)
         torch.nn.init.normal_(self.nn1.bias, std = 1e-6)
         # self.af1 = nn.GELU() # use additinal hidden layers only when training on large datasets
